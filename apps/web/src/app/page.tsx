@@ -1,12 +1,9 @@
-import { Container } from './components/container'
-import { ButtonComponent } from './components/button'
+import { Banner } from './components/banner';
 
 function Page() {
   return (
     <div className="bg-white">
-     <Container>
-      <ButtonComponent>Button component</ButtonComponent>
-     </Container>
+      <Banner />
     </div>
   );
 }

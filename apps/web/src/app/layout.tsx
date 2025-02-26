@@ -23,7 +23,7 @@ export default function RootLayout({
         />
       </head>
       <body className="scroll-smooth">
-        <div className="pt-[6.18rem]">{children}</div>
+        <div>{children}</div>
         <Toaster position="top-right" reverseOrder={false} />
       </body>
     </html>

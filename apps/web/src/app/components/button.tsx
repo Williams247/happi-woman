@@ -12,7 +12,7 @@ export function ButtonComponent({
   return (
     <Button
       className={twMerge(
-        'shadow-none bg-[#1E944F] py-2.5 px-5 font-gotham text-sm text-white',
+        'shadow-none bg-[#E83F6F] py-2.5 px-5 font-gotham text-sm text-white',
         className
       )}
     >
