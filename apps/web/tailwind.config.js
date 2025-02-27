@@ -15,6 +15,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         bg: "url('/bg.png')",
+        talktous:"url('/talktous.png')",
       },
     },
   },

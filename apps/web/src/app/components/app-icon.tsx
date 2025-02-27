@@ -14,3 +14,4 @@ export function AppIcon() {
     </div>
   );
 }
+

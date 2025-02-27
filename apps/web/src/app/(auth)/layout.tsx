@@ -14,7 +14,7 @@ const AuthLayout = ({ children }: AuthLayoutProps) => {
           <main className="flex-grow">{children}</main>
 
           <div className="flex gap-x-3 justify-center items-center md:mt-0 mt-10">
-            <Image src="/fmwa.png" height={50} width={50} alt="fmwa-logo" />
+            <Image src="/fmwa.png" height={40} width={40} alt="fmwa-logo" />
             <div className="text-sm">
               <p className="py-1">Powered by</p>
               <p className="font-bold text-[#333333]">
