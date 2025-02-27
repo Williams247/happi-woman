@@ -35,7 +35,7 @@ const Otp = ({ onNextStep }: ContainerProps) => {
       <Form {...handler}>
         <form
           onSubmit={handler.handleSubmit(onSubmit)}
-          className="flex flex-col items-center gap-4 mt-14 md:w-[50%] md:max-w-sm w-full"
+          className="flex flex-col items-center gap-4 mt-14 md:w-[55%] md:max-w-sm w-full"
         >
           <PinInput
             length={6}
