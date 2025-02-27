@@ -5,6 +5,7 @@ import { Empower } from './components/empower';
 import { WhyHappyWoman } from './components/whyhappywoman';
 import Footer from './components/footer';
 import TalkToUS from './components/talk-to-us';
+import UserStories from './components/user-stories';
 
 function Page() {
   return (
@@ -14,6 +15,7 @@ function Page() {
       <Welcome />
       <Empower />
       <WhyHappyWoman />
+      <UserStories/>
       <TalkToUS/>
       <Footer/>
     </div>

@@ -4,7 +4,7 @@ import { ButtonComponent } from '../button';
 const TalkToUS = () => {
   return (
 
-    <div className="min-hscreen bg-cover bg-center flex md:flex-row flex-col justify-between items-center bg-talktous bg-no-repeat md:px-20 md:py-12 p-10">
+    <div className="bg-cover bg-center flex md:flex-row flex-col justify-between items-center bg-talktous bg-no-repeat md:px-20 md:py-12 p-10">
     <div>
       <h1 className="text-white lg:text-4xl md:text-3xl text-2xl font-bold">
         Got any question / problems?
