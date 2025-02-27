@@ -1,52 +1,47 @@
-'use client';
+import { useFormContext } from 'react-hook-form';
 
-import { useController, Control, useFormContext } from 'react-hook-form';
-import { FormItem, FormLabel, FormControl, FormMessage } from '../ui/form';
+import { cn } from "../../utils/cn"
+import {
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '../ui/form';
 import { Input } from '../ui/input';
+import { FormInputProps } from './types';
 
-interface InputProps {
-  name: string;
-  label?: string;
-  control: Control<any>;
-  placeholder?: string;
-  className?: string;
-  formClassName?: string;
-}
+type Props = FormInputProps & {
+  type?: 'text' | 'email' | 'number' | 'date';
+  name?: string;
+};
 
-export function TextInput({
-  name,
-  label,
-  control,
-  placeholder,
-  className,
-  formClassName,
-}: InputProps) {
-  
-  const { field } = useController({
-    name,
-    control,
-  });
-
-  const {
-    formState: { errors },
-  } = useFormContext();
-
-  const errorMessage = errors[name]?.message;
+export function TextInput(props: Props) {
+  const form = useFormContext();
 
   return (
-    <FormItem className={className}>
-      <FormLabel className="font-rethink text-[#191C1F]">{label}</FormLabel>
-      <FormControl>
-        <Input className={formClassName} placeholder={placeholder} {...field} />
-      </FormControl>
-      {errorMessage && (
-        <FormMessage
-          className="text-sm mt-3 font-rethink"
-          style={{ color: 'red' }}
+    <FormField
+      control={form?.control}
+      name={props.name}
+      render={({ field }) => (
+        <FormItem
+          className={cn('flex flex-col space-y-2 w-full', props.className)}
         >
-          {String(errorMessage)}
-        </FormMessage>
+          {props.label && <FormLabel>{props.label}</FormLabel>}
+          <FormControl>
+            <Input
+              type={props.type ?? 'text'}
+              id={props.name}
+              placeholder={props.placeholder}
+              className={''}
+              {...field}
+              disabled={props.disabled}
+              readOnly={props.readOnly}
+            />
+          </FormControl>
+          <FormMessage className={'text-xs ml-auto'} />
+        </FormItem>
       )}
-    </FormItem>
+    />
   );
 }

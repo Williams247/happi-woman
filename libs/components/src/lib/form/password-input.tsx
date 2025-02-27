@@ -39,7 +39,7 @@ export function PasswordInput<TP extends string>(props: FormProps<TP>) {
               <input
                 id={props.name}
                 type={hidden ? 'password' : 'text'}
-                className={'w-full input py-3 px-5'}
+                className={'w-full input py-2 px-5 outline-none'}
                 placeholder={props.placeholder}
                 {...field}
               />
