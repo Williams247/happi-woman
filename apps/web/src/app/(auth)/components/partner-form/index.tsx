@@ -1,4 +1,4 @@
-'use client'
+'use client';
 import { useRouter } from 'next/navigation';
 import React from 'react';
 import Email from './Email';
@@ -21,40 +21,39 @@ const PartnerForm = ({ step }: { step?: string | boolean | string[] }) => {
   };
 
   return (
-    <div className=''>
-      <div className='flex justify-between'>
-        <div className='logo'>
-          <AppIcon/>
+    <div>
+      <div className="flex justify-between">
+        <div className="logo">
+          <AppIcon />
         </div>
-        <div className='progress-number'>
-          <p className='text-base'>  <span className='text-xl font-medium'>{currentStep}</span> / 5</p>
-        
+        <div className="progress-number">
+          <p className="text-base">
+            {' '}
+            <span className="text-xl font-medium">{currentStep}</span> / 5
+          </p>
         </div>
       </div>
-      <div className='mt-6'>
-      {step === '1' && (
-        <Email onNextStep={handleNextStep} onPrevStep={handlePrevStep} />
-      )}
-      {step === '2' && (
-        <Otp onNextStep={handleNextStep} onPrevStep={handlePrevStep} />
-      )}
-      {step === '3' && (
-        <PersonalDetails
-          onNextStep={handleNextStep}
-          onPrevStep={handlePrevStep}
-        />
-      )}
-      {step === '4' && (
-        <BusinessDetails
-          onNextStep={handleNextStep}
-          onPrevStep={handlePrevStep}
-        />
-      )}
-      {step === '5' && (
-        <Document />
-      )}
+      <div className="mt-6">
+        {step === '1' && (
+          <Email onNextStep={handleNextStep} onPrevStep={handlePrevStep} />
+        )}
+        {step === '2' && (
+          <Otp onNextStep={handleNextStep} onPrevStep={handlePrevStep} />
+        )}
+        {step === '3' && (
+          <PersonalDetails
+            onNextStep={handleNextStep}
+            onPrevStep={handlePrevStep}
+          />
+        )}
+        {step === '4' && (
+          <BusinessDetails
+            onNextStep={handleNextStep}
+            onPrevStep={handlePrevStep}
+          />
+        )}
+        {step === '5' && <Document />}
       </div>
-     
     </div>
   );
 };

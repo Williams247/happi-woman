@@ -43,7 +43,7 @@ const Document = () => {
       <Form {...handler}>
         <form
           onSubmit={handler.handleSubmit(onSubmit)}
-          className="flex flex-col items-center gap-4 mt-14 w-[55%] max-w-sm"
+          className="flex flex-col items-center gap-4 mt-14 md:w-[50%] md:max-w-sm w-full"
         >
           <FileUploader name={'document'} />
           <SubmitButton

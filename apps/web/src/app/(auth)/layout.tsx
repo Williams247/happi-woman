@@ -8,12 +8,12 @@ interface AuthLayoutProps {
 const AuthLayout = ({ children }: AuthLayoutProps) => {
   return (
     <div className="flex w-full min-h-screen bg-bg bg-no-repeat bg-cover bg-center items-center justify-center p-8">
-      <div className="w-full max-w-full flex bg-white shadow-lg rounded-xl overflow-hidden min-h-[90vh]">
-        {/* Left Panel - Form */}
-        <div className="w-[50%] flex flex-col justify-between px-12 py-8">
+      <div className="w-full md:max-w-full flex md:flex-row flex-col bg-white shadow-lg rounded-xl overflow-hidden min-h-[90vh]">
+
+        <div className="w-full md:w-1/2 flex flex-col justify-between md:px-12 px-6 py-8">
           <main className="flex-grow">{children}</main>
 
-          <div className="flex gap-x-3 justify-center items-center">
+          <div className="flex gap-x-3 justify-center items-center md:mt-0 mt-10">
             <Image src="/fmwa.png" height={50} width={50} alt="fmwa-logo" />
             <div className="text-sm">
               <p className="py-1">Powered by</p>
@@ -24,7 +24,7 @@ const AuthLayout = ({ children }: AuthLayoutProps) => {
           </div>
         </div>
 
-        <div className="w-[50%] relative my-2 mr-2 rounded-lg">
+        <div className="w-full md:w-1/2 relative my-2 mr-2 rounded-lg">
           <Image
             src="/bg.png"
             alt="Background"

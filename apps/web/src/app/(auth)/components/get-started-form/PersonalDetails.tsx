@@ -46,13 +46,12 @@ const PersonalDetails = ({ onNextStep }: ContainerProps) => {
       <Form {...handler}>
         <form
           onSubmit={handler.handleSubmit(onSubmit)}
-          className="flex flex-col gap-4 mt-14 w-[50%] max-w-sm"
+          className="flex flex-col gap-4 mt-14 md:w-[50%] md:max-w-sm w-full"
         >
           <TextInput name="full_name" label="" placeholder="Full Name" />
           <TextInput name="email" label="" placeholder="Email" />
           <TextInput name="phone_number" label="" placeholder="Phone Number" />
 
-          {/* Radio Inputs for Selection */}
           <div className="flex gap-x-4">
             <div className="flex items-center gap-x-2">
               <input

@@ -3,7 +3,6 @@ import { useRouter } from 'next/navigation';
 import React from 'react';
 import Otp from './Otp';
 import PersonalDetails from './PersonalDetails';
-import Document from './Document';
 import { AppIcon } from '../../../components/app-icon';
 import ProfileSetup from './ProfileSetup';
 

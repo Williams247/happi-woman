@@ -68,7 +68,7 @@ const ProfileSetup = () => {
       <Form {...handler}>
         <form
           onSubmit={handler.handleSubmit(onSubmit)}
-          className="flex flex-col gap-4 mt-8 w-[50%] max-w-sm"
+          className="flex flex-col gap-4 mt-8 md:w-[50%] md:max-w-sm w-full"
         >
           <TextInput name="username" label="" placeholder="Username" />
 
