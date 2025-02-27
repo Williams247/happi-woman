@@ -1,75 +1,100 @@
 'use client';
 
-import { useController, Control, useFormContext, Path } from 'react-hook-form';
-import { twMerge } from 'tailwind-merge';
+import { CaretSortIcon } from '@radix-ui/react-icons';
+import { Key, useState } from 'react';
+import { useFormContext } from 'react-hook-form';
+
+import { cn } from '../../utils/cn';
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '../ui/select';
-import { FormLabel, FormMessage } from '../ui/form';
+  Command,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+} from '../ui/command';
+import {
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '../ui/form';
+import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover';
+import { InputWrapper } from './input-wrapper';
+import { SelectItem } from './types';
 
-interface Props<T extends Record<string, any>> {
+type FormProps<T extends Key> = {
+  name: string;
   className?: string;
-  formClassName?: string;
-  label: string;
+  label?: string;
   placeholder?: string;
-  items: Array<{ text: string; value: string }>;
-  control: Control<T>;
-  name: Path<T>;
-}
+  items: Array<SelectItem<T>>;
+  contentHeight?: string;
+  defaultValue?: string;
+  isMulti?: boolean;
+  isLoading?: boolean;
+};
 
-export function SelectInput<T extends Record<string, any>>({
-  className,
-  formClassName,
-  label,
-  placeholder,
-  items,
-  name,
-  control,
-}: Props<T>) {
-  const { field } = useController({
-    name,
-    control,
-  });
-
-  const {
-    formState: { errors },
-  } = useFormContext();
-
-  const errorMessage = errors[name]?.message as string | undefined;
+export function SelectInput<T extends Key>(props: FormProps<T>) {
+  const form = useFormContext<{ [key: string]: T | string }>();
+  const [open, setOpen] = useState(false);
 
   return (
-    <div className={className}>
-      <FormLabel className="font-rethink text-[#191C1F]">{label}</FormLabel>
-      <Select onValueChange={field.onChange} value={field.value}>
-        <SelectTrigger
-          className={twMerge('w-full mt-2', formClassName)}
-          aria-label={label}
+    <FormField
+      control={form?.control}
+      name={props.name}
+      render={({ field }) => (
+        <FormItem
+          className={cn('flex flex-col space-y-2 w-full', props.className)}
         >
-          <SelectValue placeholder={placeholder} />
-        </SelectTrigger>
-
-        <SelectContent className="w-full bg-white" style={{ width: "15rem" }}>
-          {items.map(({ text, value }) => (
-            <SelectItem
-              key={value}
-              value={value}
-              className="w-full bg-white text-black hover:bg-gray-100"
-            >
-              {text}
-            </SelectItem>
-          ))}
-        </SelectContent>
-      </Select>
-
-      {errorMessage && (
-        <FormMessage className="text-sm mt-3 font-rethink" style={{ color: 'red' }}>
-          {errorMessage}
-        </FormMessage>
+          {props.label && <FormLabel>{props.label}</FormLabel>}
+          <Popover open={open} onOpenChange={setOpen} modal={true}>
+            <PopoverTrigger>
+              <FormControl>
+                <InputWrapper
+                  className={cn(
+                    'justify-between py-2 px-5',
+                    !field.value && 'text-muted-foreground'
+                  )}
+                  role={'combobox'}
+                >
+                  {field.value
+                    ? props.items.find((item) => item.value === field.value)
+                        ?.label
+                    : props.placeholder}
+                  <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                </InputWrapper>
+              </FormControl>
+            </PopoverTrigger>
+            <PopoverContent>
+              <Command>
+                <CommandInput placeholder={'Enter search'} />
+                <CommandEmpty>Not found ..</CommandEmpty>
+                <CommandGroup>
+                  <CommandList style={{ maxHeight: props.contentHeight }}>
+                    {props.items?.map((item) => (
+                      <CommandItem
+                        value={item.keywords.join(', ')}
+                        key={item.value}
+                        onSelect={() => {
+                          form?.setValue(props.name, item.value, {
+                            shouldValidate: true,
+                          });
+                          setOpen(false);
+                        }}
+                      >
+                        {item?.label}
+                      </CommandItem>
+                    ))}
+                  </CommandList>
+                </CommandGroup>
+              </Command>
+            </PopoverContent>
+          </Popover>
+          <FormMessage className={'text-xs ml-auto'} />
+        </FormItem>
       )}
-    </div>
+    />
   );
 }

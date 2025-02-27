@@ -14,7 +14,7 @@ export function WhyHappyWoman() {
           </p>
         </div>
       </div>
-      <p className="text-center font-gothamB text-[2.5rem] mt-6">
+      <p className="text-center font-gotham text-[2.5rem] mt-6">
         Why Choose Happy<span className="text-[#006BA6]">Woman?</span>
       </p>
 

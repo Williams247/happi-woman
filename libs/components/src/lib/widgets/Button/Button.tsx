@@ -19,7 +19,7 @@ export function Button({
   ...props
 }: PropsWithChildren<Props>) {
   return (
-    <UIButton className={cn('rounded-md px-12 py-3 bg-[#7209B7]', className)} {...props}>
+    <UIButton className={cn('rounded-md px-12 py-3 bg-[#E83F6F] hover:bg-[#d76585] text-white', className)} {...props}>
       {children}
       {loading && (
         <span className={'w-5 ml-3'}>

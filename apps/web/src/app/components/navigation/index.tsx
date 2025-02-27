@@ -35,11 +35,18 @@ export function Navigation() {
         </ul>
       </div>
       <div className="flex gap-3">
-        <button className="text-[#E83F6F] font-gothamM text-sm mx-6">Log in</button>
-        <button className="border border-[#5603AD] font-gothamM rounded-md text-[#5603AD] text-sm px-3 py-3.5 text-sm">
-          Partner Sign up
+        <button className="text-[#E83F6F] font-gothamM text-sm mx-6">
+          Log in
         </button>
-        <ButtonComponent className="text-sm">Get started</ButtonComponent>
+        <Link href="/partner-register">
+          <button className="border border-[#5603AD] font-gothamM rounded-md text-[#5603AD] px-3 py-3.5 text-sm">
+            Partner Sign up
+          </button>
+        </Link>
+
+        <Link href="/get-started">
+          <ButtonComponent className="text-sm">Get started</ButtonComponent>
+        </Link>
       </div>
     </nav>
   );

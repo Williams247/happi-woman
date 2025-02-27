@@ -1,6 +1,6 @@
 import { PropsWithChildren } from 'react';
 
-import { cn } from "../../utils/cn"
+import { cn } from '../../utils/cn';
 
 type Props = {
   className?: string;
@@ -15,7 +15,9 @@ export function InputWrapper(props: PropsWithChildren<Props>) {
     <div
       className={cn(
         'flex items-center w-full rounded-md border border-input text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground',
-        'focus-within:outline-none focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2',
+        'focus-within:outline-none',
+        'focus-within:ring-0',
+        'focus-within:ring-offset-0',
         '[&>.input]:bg-transparent [&>.input:focus-visible]:outline-none',
         props.focus && 'outline-none ring-2 ring-ring ring-offset-2',
         props.disabled && 'cursor-not-allowed opacity-50',
